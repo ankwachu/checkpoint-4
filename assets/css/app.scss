@@ -1,7 +1,35 @@
 @import "~bootstrap/scss/bootstrap";
 @import "_vars.scss";
 
+.navbar {
+  background-color: $primary-color;
+}
+
+.nav-link, .nav-item {
+    cursor: pointer;
+}
+
+.navbar-brand {
+  color: $light-color;
+}
+
+.navbar-brand:hover {
+  color: $secondary-color;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: $light-color;
+}
+
+.navbar-nav .nav-link:hover {
+    color: $secondary-color;
+}
+
 .form-control {
   width: 25%;
 }
 
+.position-absolute {
+  top: 230px;
+  color: $light-color;
+}
