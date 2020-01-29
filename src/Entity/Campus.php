@@ -29,7 +29,8 @@ class Campus
     private $description;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Location", inversedBy="campus", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Location", inversedBy="campus",)
+     * @ORM\JoinColumn(nullable=false)
      */
     private $location;
 
