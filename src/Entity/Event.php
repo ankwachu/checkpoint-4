@@ -39,11 +39,6 @@ class Event
     private $hour;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Wilder", mappedBy="evnets")
-     */
-    private $wilders;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Campus", inversedBy="events")
      */
     private $campus;

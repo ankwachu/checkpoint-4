@@ -22,7 +22,7 @@ class Location
     private $name;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Campus", mappedBy="location", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Campus", mappedBy="location")
      */
     private $campus;
 
