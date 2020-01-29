@@ -18,14 +18,25 @@
                 <a class="nav-link" href="#">Spectacles</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Connexion</a>
+                {% if app.user %}
+                <div class="nav-link">Hello {{ app.user.username }}</div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Inscription</a>
+                <a class="nav-link" href="{{ path('app_profile') }}"> Mon compte</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
             </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_login') }}">Se connecter</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
+            </li>
+            {% endif %}
         </ul>
+
     </div>
 </nav>
+
