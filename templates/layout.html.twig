@@ -3,8 +3,10 @@
 {% block layout %}
     {% block header %}{% include '_header.html.twig' %}{% endblock %}
     <main>
+        <section>
 {#        {% include '_flash_message.html.twig' %}#}
         {% block body %}{% endblock %}
+        </section>
     </main>
 {#    {% block footer %}{% include '_footer.html.twig' %}{% endblock %}#}
 {% endblock %}
