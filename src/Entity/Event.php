@@ -39,7 +39,8 @@ class Event
     private $hour;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Campus", inversedBy="events")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Campus")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $campus;
 

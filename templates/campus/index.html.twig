@@ -11,7 +11,7 @@
                 <th>Id</th>
                 <th>Campus</th>
                 <th>Description</th>
-                <th>Ville</th>
+
                 <th>actions</th>
             </tr>
         </thead>
@@ -21,7 +21,7 @@
                 <td>{{ campus.id }}</td>
                 <td>{{ campus.name }}</td>
                 <td>{{ campus.description }}</td>
-                <td>{{ campus.location.name }}</td>
+
                 <td>
                     <a href="{{ path('campus_show', {'id': campus.id}) }}">show</a>
                     <a href="{{ path('campus_edit', {'id': campus.id}) }}">edit</a>

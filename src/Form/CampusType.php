@@ -3,8 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Campus;
-use App\Entity\Location;
-use App\Repository\LocationRepository;
+use App\Entity\Event;
+use App\Repository\EventRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,17 +17,7 @@ class CampusType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
-            ->add('location', EntityType::class, [
-                    'class' => Location::class,
-                    'choice_label' => 'name',
-                    'label' => 'Ville',
-                    'query_builder' => function(LocationRepository $location) {
-                        return $location->createQueryBuilder('l')
-                            ->orderBy('l.name', 'ASC')
-                            ;
-                    }
-                ]
-            );
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
