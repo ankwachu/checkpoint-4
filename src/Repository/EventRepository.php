@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Campus;
 use App\Entity\Event;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
@@ -26,5 +27,17 @@ class EventRepository extends ServiceEntityRepository
             ->setParameter('title', '%'.$search.'%')
             ->getQuery()
             ->getResult();
+    }
+
+    public function findEventByCampus(?Campus $campus = null)
+    {
+        $qb = $this->createQueryBuilder('e')
+            ->where('e.campus = :campus')
+            ->setParameter('campus', $campus);
+        if ($campus == empty([$qb])) {
+            return $qb = $this->findBy([], ['date' => 'DESC']);
+        }
+        $qb->orderBy('e.date', 'ASC');
+        return $qb->getQuery()->getResult();
     }
 }

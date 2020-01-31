@@ -1,6 +1,9 @@
 @import "~bootstrap/scss/bootstrap";
 @import "_vars.scss";
 
+
+body { padding-top: 50px; }
+
 .navbar {
   background-color: $primary-color;
 }
@@ -25,11 +28,50 @@
     color: $secondary-color;
 }
 
-.form-control {
-  width: 25%;
-}
-
 .position-absolute {
-  top: 170px;
+  top: 150px;
   color: $light-color;
 }
+
+/*FONTS*/
+@mixin headings($from: 1, $to: 6) {
+  @for $i from $from through $to {
+    h#{$i} {
+      @content
+    }
+  }
+}
+
+@include headings() {
+  font-family: $title-font;
+  color: $secondary-color;
+  letter-spacing: 5px;
+}
+
+p {
+  font-family: $text-font;
+}
+
+/*BUTTONS*/
+.btn-primary {
+  background-color: $dark-primary;
+  border-color: $dark-primary;
+  border-radius: 0;
+}
+
+.btn:hover {
+  opacity: .8;
+  background-color: $dark-primary;
+  border-color: $dark-primary;
+}
+
+/*CARDS SHADOW*/
+.box-shadow {
+  box-shadow: 0 3px 10px -3px $photo-hue;
+}
+.background-img {
+  background: url("https://mdbootstrap.com/img/Photos/Others/img (50).jpg")no-repeat center center;
+  background-size: cover;
+  height: 50vh;
+}
+

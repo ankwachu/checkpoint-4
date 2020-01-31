@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/campus")
@@ -17,6 +18,7 @@ class CampusController extends AbstractController
 {
     /**
      * @Route("/", name="campus_index", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function index(CampusRepository $campusRepository): Response
     {
@@ -27,6 +29,7 @@ class CampusController extends AbstractController
 
     /**
      * @Route("/new", name="campus_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function new(Request $request): Response
     {
@@ -50,6 +53,7 @@ class CampusController extends AbstractController
 
     /**
      * @Route("/{id}", name="campus_show", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function show(Campus $campus): Response
     {
@@ -60,6 +64,7 @@ class CampusController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="campus_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function edit(Request $request, Campus $campus): Response
     {

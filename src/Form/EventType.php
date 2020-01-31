@@ -9,6 +9,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class EventType extends AbstractType
 {
@@ -27,6 +28,12 @@ class EventType extends AbstractType
                     return $campus->createQueryBuilder('c')
                         ->orderBy('c.name', 'ASC');
                 }
+            ])
+            ->add('imageFile', VichImageType::class, [
+                'required'      => false,
+                'allow_delete'  => false,
+                'download_uri' => false,
+                'label' => 'Image',
             ]);
     }
 

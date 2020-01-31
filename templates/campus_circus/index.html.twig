@@ -1,24 +1,24 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Hello CampusCircusController!{% endblock %}
+{% block title %}Les Campus Circus{% endblock %}
 
 {% block body %}
-    <h1 class="text-center">Découvrez nos Campus Circus</h1>
-    <div class="row">
-        {% for campus in campuses %}
-            <div class="card col-5">
-                <img src="https://images.unsplash.com/photo-1503192851959-c6da8ac80cff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
-                     class="card-img-top img-fluid" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title"></h5>
-                    <a href="">{{ campus.name }}</a>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    <h1 class="text-center m-4">Découvrez nos Campus Circus</h1>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            {% for campus in campuses %}
+                <div class="col-12 col-md-3 m-3">
+                    <div class="box-shadow">
+                        <img src="{{ vich_uploader_asset(campus, 'imageFile') }}"
+                             class="card-img-top img-fluid box-shadow" alt="{{ campus.name }}">
+                        <div class="card-body position-absolute">
+                            <h2 class="card-title" style="color:antiquewhite">{{ campus.name|upper }}</h2>
+                        </div>
+                        <a href="{{ path('circus_detail', {'id': campus.id}) }}" class="btn btn-primary btn-block">voir
+                            le campus</a>
+                    </div>
                 </div>
-
-                <button type="button" class="btn btn-primary btn-lg btn-block">Prochain spectacle</button>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

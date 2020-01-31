@@ -3,36 +3,42 @@
 namespace App\Controller;
 
 use App\Entity\Campus;
+use App\Entity\Event;
 use App\Repository\CampusRepository;
+use App\Repository\EventRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * @Route("/campus-circus")
+ * @Route("/circus")
  */
 
 class CampusCircusController extends AbstractController
 {
     /**
-     * @Route("/", name="campus-circus_index")
+     * @Route("/", name="circus_index")
      * @param CampusRepository $campusRepository
      * @return Response
      */
     public function index(CampusRepository $campusRepository): Response
     {
         return $this->render('campus_circus/index.html.twig', [
-            'campuses' => $campusRepository->findAll(),
+            'campuses' => $campusRepository->findBy([],
+                ['name' => 'ASC'],
+                10),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="campus_detail", methods={"GET"})
+     * @Route("/{id}", name="circus_detail", methods={"GET"})
      */
-    public function show(Campus $campus): Response
+    public function show(Campus $campus, EventRepository $eventRepository): Response
     {
+        $events = $eventRepository->findEventByCampus($campus);
         return $this->render('campus_circus/show.html.twig', [
             'campus' => $campus,
+            'events' => $events,
         ]);
     }
 }

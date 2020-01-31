@@ -27,6 +27,13 @@
                 <th>Hour</th>
                 <td>{{ event.hour ? event.hour|date('H:i:s') : '' }}</td>
             </tr>
+            <tr>
+                <th>Poster</th>
+                <td>
+                    <img src="{{ vich_uploader_asset(event, 'imageFile') }}"
+                         alt="{{ campus.name }} poster">
+                </td>
+            </tr>
         </tbody>
     </table>
 

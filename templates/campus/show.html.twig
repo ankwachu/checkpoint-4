@@ -19,6 +19,13 @@
                 <th>Description</th>
                 <td>{{ campus.description }}</td>
             </tr>
+            <tr>
+                <th>Poster</th>
+                <td>
+                    <img src="{{ vich_uploader_asset(campus, 'imageFile') }}"
+                         alt="{{ campus.name }} poster">
+                </td>
+            </tr>
         </tbody>
     </table>
 
