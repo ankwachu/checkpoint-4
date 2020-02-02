@@ -1,0 +1,20 @@
+{% extends 'layout.html.twig' %}
+{% set page = 'app_register' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+    <div class="col-12 col-md-5 m-2 m-md-5">
+        <h1 class="mb-3">Créer un compte</h1>
+
+        {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.firstname) }}
+        {{ form_row(registrationForm.lastname) }}
+        {{ form_row(registrationForm.plainPassword) }}
+
+        <button class="btn btn-lg btn-primary mt-3">Créer mon compte</button>
+        {{ form_end(registrationForm) }}
+    </div>
+
+{% endblock %}

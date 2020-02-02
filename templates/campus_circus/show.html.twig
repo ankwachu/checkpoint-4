@@ -1,0 +1,36 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ campus.name|capitalize }}{% endblock %}
+
+{% block body %}
+
+    <a href="{{ path('circus_index') }}" class="btn btn-primary m-3 box-shadow">Retour à la liste des campus</a>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-5">
+                <h1 class="">{{ campus.name|capitalize }}</h1>
+                <div class="">
+                    <p class="card-text">{{ campus.description }}</p>
+                </div>
+                <h2 class="mt-4">les spectacles</h2>
+                {% for event in events %}
+                    <div class="mb-4 d-flex justify-content-between">
+                        <div class="mt-2">{{ event.title|capitalize }}
+                            {{ event.date ? event.date|date('d-m-Y') : '' }} à
+                            {{ event.hour ? event.hour|date('H:i') : '' }}</div>
+                        <div class="">
+                            <a href="{{ path('event_detail', {'id': event.id}) }}" class="btn btn-primary box-shadow">Détail</a>
+                            <button type="button" class="btn btn-primary box-shadow">Réservation</button>
+                        </div>
+                    </div>
+                {% else %}
+                    <div>Pas de spectacle disponible</div>
+                {% endfor %}
+            </div>
+            <div class="col-12 col-md-5">
+                <img src="{{ vich_uploader_asset(campus, 'imageFile') }}"
+                     class="card-img-top img-fluid box-shadow" alt="{{ campus.name }}">
+            </div>
+        </div>
+    </div>
+{% endblock %}

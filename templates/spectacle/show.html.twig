@@ -1,0 +1,33 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ event.title|capitalize }}{% endblock %}
+
+{% block body %}
+    <a href="{{ path('spectacle_index') }}" class="btn btn-primary m-3 box-shadow">Retour à la liste des spectacles</a>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-5">
+                <img src="{{ vich_uploader_asset(event, 'imageFile') }}"
+                     class="card-img-top img-fluid box-shadow" alt="...">
+            </div>
+            <div class="col-12 col-md-5">
+                <h1 class="text-center">{{ event.title|capitalize }}</h1>
+                <div class="mb-4 d-flex flex-column">
+                    <p class="m-0" style="font-size:32px">{{ event.campus.name|capitalize }}</p>
+                    <h3 class="">
+                        {{ event.date ? event.date|date('d-m-Y') : '' }}
+                    </h3>
+                    <h4>
+                        {{ event.hour ? event.hour|date('H:i') : '' }}
+                    </h4>
+                    <p>
+                        {{ event.description }}
+                    </p>
+                    <div class="">
+                        <button type="button" class="btn btn-primary">Réservation</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

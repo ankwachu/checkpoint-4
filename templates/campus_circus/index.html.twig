@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Les Campus Circus{% endblock %}
+
+{% block body %}
+    <h1 class="text-center m-4">Découvrez nos Campus Circus</h1>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            {% for campus in campuses %}
+                <div class="col-12 col-md-3 m-3">
+                    <div class="box-shadow">
+                        <img src="{{ vich_uploader_asset(campus, 'imageFile') }}"
+                             class="card-img-top img-fluid box-shadow" alt="{{ campus.name }}">
+                        <div class="card-body position-absolute">
+                            <h2 class="card-title" style="color:antiquewhite">{{ campus.name|upper }}</h2>
+                        </div>
+                        <a href="{{ path('circus_detail', {'id': campus.id}) }}" class="btn btn-primary btn-block">voir
+                            le campus</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

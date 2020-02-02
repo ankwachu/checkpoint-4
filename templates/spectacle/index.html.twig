@@ -1,0 +1,36 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Les spectacles{% endblock %}
+
+{% block body %}
+    <h1 class="text-center m-4">Découvrez nos spectacles</h1>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="text-center">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <button class="btn btn-primary">Rechercher</button>
+                <a href="{{ path('spectacle_index') }}" class="btn btn-primary">Voir tous les spectacles</a>
+                {{ form_end(form) }}
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            {% for event in events %}
+                <div class="col-12 col-md-3 m-3 box-shadow p-0">
+                    <img src="{{ vich_uploader_asset(event, 'imageFile') }}"
+                         class="card-img-top img-fluid " alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ event.title|capitalize }}</h5>
+                        <h5 class="card-title">{{ event.date ? event.date|date('d-m-Y') : '' }} à
+                            {{ event.hour ? event.hour|date('H:i') : '' }}</h5>
+                        <h5>Campus:<a
+                                    href="{{ path('circus_detail', {'id': event.campus.id}) }}">{{ event.campus.name|capitalize }}</a>
+                        </h5>
+                        <a href="{{ path('event_detail', {'id': event.id}) }}" class="btn btn-primary">Détail</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

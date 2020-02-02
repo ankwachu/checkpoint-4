@@ -1,0 +1,35 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Campus index{% endblock %}
+
+{% block body %}
+    <div class="container-fluid mt-3">
+        <h1>Campus index</h1>
+        <a href="{{ path('campus_new') }}">Create new</a>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Campus</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for campus in campuses %}
+                <tr>
+                    <td>{{ campus.name }}</td>
+                    <td>
+                        <a href="{{ path('campus_show', {'id': campus.id}) }}">show</a>
+                        <a href="{{ path('campus_edit', {'id': campus.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
